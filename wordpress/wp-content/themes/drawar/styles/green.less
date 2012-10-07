@@ -1,0 +1,502 @@
+// GREEN ALT STYLE
+/* Imports */
+@import url(../css/mixins.less);
+// Colors
+@color_links: #00905A; // Links / Main theme colour 
+@complimentary: #f3ce00; // Complimentary colour
+@color_body: #555; // Body Copy
+// Borders
+@border_main: #dddddd; // The 1px grey rules used throughout the WF
+// Backgrounds
+@bg_light: #fafafa;
+@bg_dark: #eeffed;
+
+//Image Path
+@img-folder: "green";
+
+pre { background: @bg_light; border-color: @border_main;  } 
+
+/*-------------------------------------------------------------------------------------------*/
+/* 1. SETUP */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 1.1 Defaults */
+body  { 
+	color: @color_body;
+}
+
+h1, h2, h3, h4, h5, h6  {
+	color: darken(@color_body, 12%); 
+}
+
+hr { background-color: @border_main; }
+input, textarea { border-color: @border_main; color: lighten(@color_body, 25%); background: lighten(@bg_light, 100%); }
+
+/* 1.2 Hyperlinks */
+
+a { 
+	color: @color_links; 
+	
+	&:hover {
+		color: darken(saturate(@color_links, 8), 10%);
+	}
+	&:active {
+		color: darken(saturate(@color_links, 8), 20%);
+	}
+}
+
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* 2. SITE STRUCTURE & APPEARANCE */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 2.1 Containers & Columns */
+
+#header-wrap { .vertical_gradient(@bg_dark,#fff); }
+#navigation-wrap { .vertical_gradient(lighten(desaturate(@color_links, 11), 8%),darken(saturate(@color_links, 5), 6%)); }
+
+/* 2.2 Navigation */
+
+#top .nav li.parent > a:after { border-color:@color_links transparent transparent transparent; }
+
+#navigation{
+	ul.rss {
+		li {
+			a {
+				color: @color_body;
+			}
+			&.sub-email { color: @color_body; }
+		}
+	}
+	nav { display: inline; 
+		.nav-prev {
+			a {  
+				background:url("@{img-folder}/nav-prev.png") no-repeat 0 0 transparent;
+			}
+		}
+		.nav-next {
+			a {  
+				background:url("@{img-folder}/nav-next.png") no-repeat 0 0 transparent;
+			}
+		}
+	}
+	.tags {
+		a {  
+			background:url("@{img-folder}/nav-tags.png") no-repeat 0 0 transparent;
+		}
+	}
+	.tag-list { 
+		ul {
+			li {
+	 			a { border-top: 1px solid @border_main; color: lighten(@color_body, 10%); 
+	 			}
+	 		}
+	 	}
+	}
+	.sharing {
+		a {  
+			background:url("@{img-folder}/nav-sharing.png") no-repeat 0 0 transparent;
+		}
+	}
+	.share-list {  
+	ul {
+			li:first-child {
+				background: url("@{img-folder}/nav-indicator.png") no-repeat scroll center top transparent;
+			}
+			li { border-top: 1px solid @border_main; color: lighten(@color_body, 10%); 
+	 		}
+	 	}
+	}
+	.nav-info {
+		  a { 
+		  	 background:url("@{img-folder}/more-info.png") no-repeat 0 0 transparent;
+    	  }
+	}
+}
+
+.nav {
+	li {
+		a {
+			color: lighten(@color_body, 100%); 
+		}
+	}
+}
+
+
+/* 2.2.4 Sidebar Navigation */
+#sidebar .widget_nav_menu li {
+		.vertical_gradient(#ffffff,lighten(desaturate(spin(@complimentary, 353), 41%), 50%));
+		border-color: lighten(desaturate(spin(@complimentary, 353), 56%), 36%) !important;
+		a { color: darken(desaturate(spin(@complimentary, 354), 75%), 7%); }
+}
+#sidebar .widget_nav_menu li.current_page_item a { border-top: 1px solid @border_main; }
+
+/* 2.3 Header */
+#header {
+	.site-title, .site-description {
+	    a {
+	    	color: darken(@color_body, 20%);
+	    }
+	}
+	.site-description { color: lighten(@color_body, 10%); }
+	#introduction-bar {
+		h2 { color: @color_links;  }
+		.introduction-text { color: lighten(desaturate(@color_links, 30%), 18%); }
+		.close { background: url("@{img-folder}/close-x.png") no-repeat scroll right 1px transparent; }
+	}
+}
+
+/* 2.5 Sidebar */
+#sidebar{
+	background: @bg_light;
+	border-color: @border_main;
+}
+
+/* 2.6 Footer */
+#footer{
+	border-top: 1px solid @border_main; 
+	color: lighten(@color_body, 10%);
+}
+
+#footer-widgets { 
+	border-top:1px solid @border_main;
+	h3 { 
+		border-bottom:1px solid @border_main; }
+	.widget_woo_authors .user-list {
+		h3 { 
+			a { color:@color_body; text-transform: none; }
+		}
+	}
+	.widget ul li a { 
+		color: @color_links; 
+		&:hover { color: darken(saturate(@color_links, 8), 10%); }
+	}
+	#tabs .inside li { border-bottom: 1px solid @border_main; }
+}
+
+/*-------------------------------------------------------------------------------------------*/
+/* 3. POSTS */
+/*-------------------------------------------------------------------------------------------*/
+
+.archive_header {
+	border-bottom:@border_main 1px solid;
+}
+
+.post, .type-page {
+	header { border-bottom: 1px solid @border_main;  }
+	header .post-author { 
+		color: lighten(@color_body, 25%);
+	}
+	header h1 {
+		a:link, a:visited { color: darken(@color_body, 20%); }
+	}
+	.post-meta {
+		color: lighten(@color_body, 25%);
+	}
+	
+	/* 3.1 Images */
+	img, img.thumbnail {
+		&:hover { border-color: darken(@border_main, 10%); }
+	}
+	.wp-caption {
+		background: @bg_light;
+		border: 1px solid @border_main;
+	}
+}
+
+/* 3.2 Typographic Elements */
+.entry {
+	blockquote {
+		color: darken(@color_body, 15%);
+	}
+}
+
+/* 3.3 Pagination / WP-Pagenavi / Woo-Pagination */
+.nav-entries {
+	a {
+		color: @color_body;
+	}
+}
+.woo-pagination {
+	.page-numbers {
+		color: @color_links;
+		border:1px solid desaturate(lighten(@color_links, 50%), 50%);
+		.vertical_gradient(@bg_dark,lighten(@bg_dark, 2%));
+		&:hover { .vertical_gradient(lighten(desaturate(@color_links, 11), 8%),darken(saturate(@color_links, 5), 6%)); border-color: @color_links;  }
+		&.current  { .vertical_gradient(lighten(desaturate(@color_links, 11), 8%),darken(saturate(@color_links, 5), 6%)); border-color: @color_links;  }
+	}
+}
+
+/* 3.4 Single Post Author */
+#post-author { 
+	border-bottom: 1px solid @border_main;
+	.profile-content { border-top: 1px solid @border_main; }
+}
+
+/* 3.5 Entry Tables */
+.entry {
+	table {
+		border:1px solid @border_main;
+		tr.alt-table-row { background: darken(@bg_light, 2%); }
+		th { border: 1px solid @border_main; }
+		td { border:1px solid @border_main; }
+	}
+}
+
+/* 3.6 Connect */
+#connect { 
+	border-bottom:1px solid @border_main; 
+	.newsletter-form {
+		.submit { 
+				.vertical_gradient(#ffffff,lighten(desaturate(spin(@complimentary, 353), 41%), 50%));
+				border-color: lighten(desaturate(spin(@complimentary, 353), 56%), 36%);
+				color: darken(desaturate(spin(@complimentary, 354), 75%), 7%) !important;
+		}
+	}
+	.related-posts {
+		border-left:1px solid @border_main;
+	}
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* 4. WIDGETS */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 4.1 Generic Widgets */
+.widget  { 
+	border-bottom: 1px solid @border_main;
+	h3 {  color:@color_body; }
+	ul {
+		li {
+			border-top: 1px solid @border_main;
+			&:hover, &.menu-item-object-page, &.page_item { 
+					.vertical_gradient(#ffffff,lighten(desaturate(spin(@complimentary, 353), 41%), 50%));
+					border-color: lighten(desaturate(spin(@complimentary, 353), 56%), 36%) !important;
+					a { color: darken(desaturate(spin(@complimentary, 354), 75%), 7%); 
+					&:hover { color: darken(saturate(@color_links, 8), 10%); }
+					}
+			}
+		}
+	}
+}
+
+/* 4.2 Specific Widgets */
+/* SEARCH FORM */
+.searchform  { 
+	border-color: @border_main; 
+	input.s { color: lighten(desaturate(@color_links, 33%), 15%); }
+}
+
+.widget.widget_woo_search { .vertical_gradient(@bg_dark,#fff); }
+
+/* FLICKR */
+.widget_woo_flickr {
+	a {
+		&:hover {
+			img { border-color: darken(@border_main, 10%); }
+		}
+	}
+}
+
+/* CALENDAR */
+#wp-calendar{
+	th, td { background: darken(@bg_light, 10%);  }
+	td { color: lighten(@color_body, 10%); }
+}
+
+/* TWITTER */
+.widget_woo_twitter {
+	ul { 
+		border:1px solid @border_main;
+		li {
+			border-bottom:1px solid @border_main;
+			.time { color: lighten(@color_body, 10%); }
+		}
+	}
+	p {
+		color: lighten(@color_body, 10%);
+		a { color: darken(@color_body, 20%); }
+	}
+}
+
+/* WOOTABS */
+#tabs {	
+	ul.wooTabs {
+		li {
+			a {
+				color: @color_links;
+				border:1px solid @border_main;
+				&.selected { background: @bg_light; }
+				&:hover { background: @bg_light; color: darken(saturate(@color_links, 8), 10%); }
+			}
+		}
+	}
+	.inside {
+		border-color: @border_main;
+		#tab-tags {
+			a {
+				background: darken(@bg_light, 5%);
+				&:hover { background: darken(@bg_light, 10%);  }
+			}
+		}
+		li {
+			border-bottom:1px solid @border_main;
+			a { color: @color_links; 
+			&:hover { color: darken(saturate(@color_links, 8), 10%); }
+			}
+			span.meta { color: lighten(@color_body, 25%); }
+			img.avatar, img.thumbnail {
+				&:hover { border-color: darken(@border_main, 10%); }
+			}
+		}
+	}	
+}
+
+/* WOO FILTER */
+.widget.widget_woo_filter { 
+	background: lighten(desaturate(@color_links, 27), 50%); 
+	.inset_box_shadow(0, 5px, 15px, 5px, lighten(desaturate(@color_links, 35), 35%));
+
+	form div { border: 1px solid lighten(desaturate(@color_links, 27), 40%); .vertical_gradient(lighten(@bg_dark, 2%),@bg_dark); }
+	span.select { background: url("@{img-folder}/arrow-select.png") no-repeat scroll right center transparent; color: lighten(desaturate(@color_links, 35), 6%);  }
+	label { color: lighten(desaturate(@color_links, 35), 6%);  }
+	.option-menus { border-bottom: 1px solid lighten(desaturate(@color_links, 27), 41%); }
+	.submit-buttons {
+		border-top: 1px solid lighten(desaturate(@color_links, 27), 55%);
+		.button { border: 1px solid lighten(desaturate(@color_links, 27), 40%); color: lighten(desaturate(@color_links, 35), 6%) !important; .vertical_gradient(lighten(@bg_dark, 2%),@bg_dark); }
+		.submit.button { border-color: lighten(desaturate(spin(@complimentary, 353), 49%), 7%); color: darken(desaturate(spin(@complimentary, 354), 75%), 7%) !important; margin-right: 0; .vertical_gradient(lighten(desaturate(@complimentary, 20%), 30%),@complimentary); }
+	}
+}
+
+/*-------------------------------------------------------------------------------------------*/
+/* 5. COMMENTS */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 5.1 Comments */
+#comments {
+	h3 { border-bottom: 1px solid @border_main; border-top: 1px solid @border_main; color: @color_body; }
+	ol.commentlist > li > div:only-of-type:before {
+    	color: lighten(@color_body, 25%);
+    	background: darken(@bg_light, 5%);
+	}
+	.comment { width: auto; list-style: none;
+		.comment-head {
+			.name { color: @color_links; }
+			.date, .edit, .perma { color: lighten(@color_body, 27%); }
+		}
+		.comment-entry .comment-entry-container {
+			border-top:1px solid @border_main; 
+			border-bottom:1px solid @border_main; 
+		}
+		.reply {
+			a {
+				.vertical_gradient(#ffffff,lighten(desaturate(spin(@complimentary, 353), 41%), 50%));
+				border-color: lighten(desaturate(spin(@complimentary, 353), 56%), 36%);
+				color: darken(desaturate(spin(@complimentary, 354), 75%), 7%) !important;
+				&:hover { background: lighten(desaturate(spin(@complimentary, 357), 59%), 41%); }
+			}
+		}
+	}
+}
+
+/* 5.2 Comments Form */
+#respond  { 
+	h3 { color: @color_body;  }
+	label { color: lighten(@color_body, 25%); }
+	#reply-title {
+		small a {  
+				color: darken(spin(@complimentary, -44), 17%);
+				.vertical_gradient(#ffffff,lighten(spin(@complimentary, -44), 50%));
+				border-color: lighten(desaturate(spin(@complimentary, -44), 50%), 38%);
+				}
+	}
+	#commentform  {	
+		input.txt, textarea { border-color: @border_main; color: lighten(@color_body, 25%); background: lighten(@bg_light, 100%); }
+		#submit { 
+				.vertical_gradient(#ffffff,lighten(desaturate(spin(@complimentary, 353), 41%), 50%));
+				border-color: lighten(desaturate(spin(@complimentary, 353), 56%), 36%);
+				color: darken(desaturate(spin(@complimentary, 354), 75%), 7%) !important;
+				}
+	}
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* 6. PAGE TEMPLATES */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 6.1 Timeline Page Template */
+#archives { 
+	.archives_list {
+		border-left:1px solid @border_main;
+		.date { color: lighten(@color_body, 10%); }
+		.comments {
+			a {
+				color: lighten(@color_body, 15%);
+			}
+		}
+	}
+}
+h3.archive_year { color: @color_body;}
+
+/* 6.2 Contact Form */
+#contact-page {
+	ol.forms {
+		li {
+			&.buttons {
+				.submit { .vertical_gradient(#ffffff,lighten(desaturate(spin(@complimentary, 353), 41%), 50%)); border-color: lighten(desaturate(spin(@complimentary, 353), 56%), 36%); color: darken(desaturate(spin(@complimentary, 354), 75%), 7%) !important;  }
+			}
+		}
+	}
+} 
+.entry #contact-page ol.forms li { list-style: none; }
+.page-template-template-contact-php {
+	.location-twitter  {
+		border-bottom: 1px solid @border_main;
+	    .contact-social  {
+	    	#twitter { 
+	    	    background: url("@{img-folder}/ico-twitter-contact.png") no-repeat left center;
+	    	    ul {
+	    	    	li {
+	    	    		background: url("@{img-folder}/ico-twitter-contact-bg.png") repeat-x bottom left;
+	    	    		a.time { color: lighten(@color_body, 15%); }
+	    	    	}
+	    	    }
+	    	}
+	    	#connect  {
+	    		border-top: 1px solid @border_main;
+	    	}
+	    }
+	}
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* 7. MISC */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 7.1 Buttons */
+a.button, 
+a.comment-reply-link, 
+#commentform #submit,
+.submit,
+input[type=submit],
+input.button,
+button.button {
+	border: 1px solid @color_links - #333;
+	border-bottom-color: @color_links - #444;
+	.vertical_gradient(@color_links, @color_links - #222);
+	&:hover {  .vertical_gradient(@color_links + #111,@color_links - #111); }
+	&:active {
+		border-color: @color_links - #555;
+	}
+}
+
+
+
+/* 7.3 IE specific styling */
+.ie6 {
+	.button, .button:visited { color: @color_body !important;  }
+}

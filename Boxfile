@@ -1,0 +1,9 @@
+web1: 
+  name: wp-web 
+  shared_writable_dirs:
+    - wordpress/wp-content/uploads/
+  document_root: wordpress
+  after_build:
+    - "mv pagoda/wp-config.php wordpress/wp-config.php"
+db1:
+  name: wp-db

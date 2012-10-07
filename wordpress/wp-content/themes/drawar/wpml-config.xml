@@ -1,0 +1,7 @@
+<wpml-config> 
+    <admin-texts>
+        <key name="woo_contact_address" />
+        <key name="woo_intro_heading" />
+        <key name="woo_intro_text" />
+    </admin-texts>  
+</wpml-config>

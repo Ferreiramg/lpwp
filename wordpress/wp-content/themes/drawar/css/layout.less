@@ -1,0 +1,267 @@
+/*
+The styles in this stylesheet only apply to resolutions 768px and up
+
+CALCULATING DIMENSIONS:
+----------------------
+The layout is fluid. The sote wrapper (.col-full) has a fixed pixel max-width.
+All subsequent dimensions are calculated based on that fixed pixel width, using the formula: target / context = result
+Credit - http://www.alistapart.com/articles/fluidgrids/
+
+-----
+INDEX
+-----
+
+1. Top Navigation
+2. Main navigation dropdown menus
+ -2.1 General dropdown menus
+3. Containers & Columns
+4. Footer widgets
+5. IE Fixes
+
+*/
+
+
+/*----------------------*/
+
+@import url(mixins.less);
+
+/*----------------------*/
+
+body  { padding: 0 20px; }
+
+/* Adding padding to left & right of content columns */
+#top, #header, #content, #intro { padding-left: 20px; padding-right: 20px; }
+
+@media only screen and (max-width: 767px)  {
+	#top { background: #000; }
+	#header {
+		#logo { padding-left: 0; }
+		hgroup { float: none; clear: both; }
+		#introduction-bar {
+			width: 100%;
+			float: none;
+			clear: both; 
+			margin-top: 20px;
+			.close { float: none; }
+		}
+	}
+	#main { margin-top: 2em; }
+	#sidebar { border-width: 1px 0; }
+	#respond #commentform #submit { float: none; }
+	
+}
+
+@media only screen and (min-width: 768px) {
+		
+	/* 1. TOP NAVIGATION */
+	#top {
+		background: #000;
+		margin: 0 -20px;
+		#top-nav { display: block; }
+		.nav {
+			a {
+				color:#ddd; 
+				padding:8px 10px; 
+				line-height: 1.4; 
+				text-decoration:none;
+				text-shadow:none;
+				&:hover { background: #222; }
+				&.sf-with-ul { padding-right:20px; }
+			}
+			li {
+				position: relative;
+				&.current_page_item, &.current_page_parent, &.current-menu-ancestor, &.current-cat, &.li.current-menu-item, &.sfHover {
+					a { background: #222; }
+				}
+				&.parent {
+					> a { 
+						position: relative;
+						padding-right:2em; 
+						
+						&:after {
+							content: "";
+							display: block;
+							border:.3em solid @color_links;
+							border-color:@color_links transparent transparent transparent;
+							position: absolute;
+							top:48%;
+							right:.8751em;
+						}
+					}
+				}
+				ul {
+					background: #222; 
+					margin:0; 
+					padding:0px; 
+					width: 180px; 
+					border: none; 
+					z-index:999;
+					.box_shadow(0,2px,2px,0,rgba(0,0,0,0.1));
+					.border_radius_bottom(4px);
+					position: absolute;
+					&:last-child {
+						a { .border_radius_bottom(4px); }
+					} 
+					li {
+						a {
+							padding:8px 10px; 
+							width:160px; 
+							color:#ddd; 
+							background: none; 
+							font-size:0.9em;
+							&:hover { background: black; }
+							&.sf-with-ul { padding-right:10px; }
+						}
+						&.parent {
+							a {
+								&:after {
+									border-color:transparent transparent transparent @color_links;
+									right:0;
+									top:46%;
+								}
+							}
+						}
+						ul { margin: -31px 0 0 180px; }
+					}
+				}
+			}
+		}
+	}
+	
+	/* 2. MAIN NAVIGATION DROPDOWN MENUS */
+	h3.nav-toggle {
+		display: none;
+	}
+	#navigation  {	
+		display:block !important;
+		.nav li {
+			a { border-left:1px solid rgba(255, 255, 255, 0.1); border-right:1px solid rgba(0, 0, 0, 0.1); }
+			&.parent {
+				> a { 
+					position: relative;
+					padding-right:2em; 
+					
+					&:after {
+						content: "";
+						display: block;
+						border:.3em solid @color_links;
+						border-color:@color_links transparent transparent transparent;
+						position: absolute;
+						top:48%;
+						right:.8751em;
+					}
+				}
+			}
+			&:first-child {
+				a { border-left:none; }
+			}
+	   		ul {
+	   			background: @bg_light; 
+	   			margin :0 0 0 -1px; 
+	   			padding: 10px 15px; 
+	   			position: absolute; 
+	   			width: 180px; 
+	   			border: 1px solid darken(@border_main, 5%); 
+	   			z-index:999;
+	   		 	.sf-sub-indicator { background:url(../images/arrow-superfish-right.png) no-repeat; top:38%; }
+	   		 	li {
+	   		 		a {
+	   		 			padding: 8px 0px; 
+	   		 			width: 180px; 
+	   		 			background: none; 
+	   		 			font-size:0.9em;
+	   		 			border: none;
+	   		 			&:hover { text-decoration: underline; background: none; }
+	   		 			&.sf-with-ul { padding-right:0; }
+	   		 		}
+	   		 		&.current_page_item, &.current_page_parent, &.current-menu-ancestor, &.current-cat, &.li.current-menu-item, &.sfHover {
+	   		 			a { background: none; }
+	   		 		}
+	   		 		&.parent {
+						a {
+							padding-right:0;
+							&:after {
+								border-color:transparent transparent transparent @color_links;
+								right:0;
+								top:46%;
+							}
+						}
+					}
+	   		 	}
+	   		 	ul { margin: -37px 0 0 180px; }
+	   		 }
+		}
+	}
+	
+	/* 2.1 GENERAL DROPDOWN MENUS */
+	.nav li ul  { position: absolute; visibility: hidden; .opacity(0); .transition(); overflow: hidden; }
+	
+	.nav li:hover ul ul,
+	.nav li:hover ul ul ul,
+	.nav li:hover ul ul ul ul { .opacity(0); visibility: hidden; overflow: hidden; }
+	.nav li:hover ul,
+	.nav li li:hover ul,
+	.nav li li li:hover ul,
+	.nav li li li li:hover ul  { .opacity(1); visibility: visible; overflow: visible; }
+	
+	/* 3. CONTAINERS & COLUMNS */
+	#main.fullwidth, .layout-full #main, .col-full { max-width:960px; margin-right: auto; margin-left: auto; width:100% }
+	#main { margin-top: 3em; margin-bottom: -5000px; margin-right: 60px; padding-bottom: 5000px; width:62.5%; /* 630 / 960 = 0.6562 */ }
+	#sidebar { margin-top: 0; margin-bottom: -5000px; padding-bottom: 5000px; width:25.25%; /* 300 / 960 = 0.3125 */ } 
+	.entry img { max-width:100%; }
+	.layout-full .entry img { max-width:100%; }
+	.layout-right-content {
+		#main  { float: right; }
+		#sidebar  { float: left; }
+	}
+	.layout-full #main  { width: 100%; }
+	.col-left { float: left; }
+	.col-right { float: right; }
+	.page-template-template-contact-php {
+		.location-twitter  {
+			.col-left  { float: left; }
+			#office-location { 
+			    width: 48%; margin: 0;
+			}
+			.contact-social  {
+			    float: right; width: 48%;
+			    #twitter  { margin: 0; } 
+			}
+		}
+	}
+	
+	/* 4. FOOTER WIDGETS */
+	#footer-widgets {
+		.block { margin-right:4.76%; /* 20 / 960 = 0.0208 */ float: left; }
+		&.col-1 {
+			.block { width: 100%; float: none; }
+			.footer-widget-1 { margin-right:0; }
+		}
+		&.col-2 {
+			.block { width: 47.6%; /* 470 / 960 = 0.4896 */ }
+			.footer-widget-2 { margin-right:0; }
+		}
+		&.col-3 {
+			.block { width: 30.16%; /* 306 / 960 = 0.3186 */ }
+			.footer-widget-3 { margin-right:0; }
+		}
+		&.col-4 {
+			.block { width: 23.44%; /* 225 / 960 = 0.2344 */ }
+			.footer-widget-4 { margin-right:0; }
+		}
+	}
+	
+	/* 5. IE FIXES */
+	
+	.ie7 {
+		#top-nav {
+			position: relative;
+			z-index: 9999999;
+		}
+		
+		.nav li.parent > a {
+			padding-right:15px !important;
+		}
+	}
+
+}

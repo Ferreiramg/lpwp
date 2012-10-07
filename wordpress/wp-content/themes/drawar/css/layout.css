@@ -1,0 +1,364 @@
+/*
+The styles in this stylesheet only apply to resolutions 768px and up
+
+CALCULATING DIMENSIONS:
+----------------------
+The layout is fluid. The sote wrapper (.col-full) has a fixed pixel max-width.
+All subsequent dimensions are calculated based on that fixed pixel width, using the formula: target / context = result
+Credit - http://www.alistapart.com/articles/fluidgrids/
+
+-----
+INDEX
+-----
+
+1. Top Navigation
+2. Main navigation dropdown menus
+ -2.1 General dropdown menus
+3. Containers & Columns
+4. Footer widgets
+5. IE Fixes
+
+*/
+/*----------------------*/
+/*----------------------*/
+body {
+  padding: 0 20px;
+}
+/* Adding padding to left & right of content columns */
+#top,
+#header,
+#content,
+#intro {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media only screen and (max-width: 767px) {
+  #top {
+    background: #000;
+  }
+  #header #logo {
+    padding-left: 0;
+  }
+  #header hgroup {
+    float: none;
+    clear: both;
+  }
+  #header #introduction-bar {
+    width: 100%;
+    float: none;
+    clear: both;
+    margin-top: 20px;
+  }
+  #header #introduction-bar .close {
+    float: none;
+  }
+  #main {
+    margin-top: 2em;
+  }
+  #sidebar {
+    border-width: 1px 0;
+  }
+  #respond #commentform #submit {
+    float: none;
+  }
+}
+@media only screen and (min-width: 768px) {
+  /* 1. TOP NAVIGATION */
+  #top {
+    background: #000;
+    margin: 0 -20px;
+  }
+  #top #top-nav {
+    display: block;
+  }
+  #top .nav a {
+    color: #ddd;
+    padding: 8px 10px;
+    line-height: 1.4;
+    text-decoration: none;
+    text-shadow: none;
+  }
+  #top .nav a:hover {
+    background: #222;
+  }
+  #top .nav a.sf-with-ul {
+    padding-right: 20px;
+  }
+  #top .nav li {
+    position: relative;
+  }
+  #top .nav li.current_page_item a,
+  #top .nav li.current_page_parent a,
+  #top .nav li.current-menu-ancestor a,
+  #top .nav li.current-cat a,
+  #top .nav li.li.current-menu-item a,
+  #top .nav li.sfHover a {
+    background: #222;
+  }
+  #top .nav li.parent > a {
+    position: relative;
+    padding-right: 2em;
+  }
+  #top .nav li.parent > a:after {
+    content: "";
+    display: block;
+    border: 0.3em solid #2a5d84;
+    border-color: #2a5d84 transparent transparent transparent;
+    position: absolute;
+    top: 48%;
+    right: .8751em;
+  }
+  #top .nav li ul {
+    background: #222;
+    margin: 0;
+    padding: 0px;
+    width: 180px;
+    border: none;
+    z-index: 999;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-bottomright: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    position: absolute;
+  }
+  #top .nav li ul:last-child a {
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-bottomright: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+  #top .nav li ul li a {
+    padding: 8px 10px;
+    width: 160px;
+    color: #ddd;
+    background: none;
+    font-size: 0.9em;
+  }
+  #top .nav li ul li a:hover {
+    background: black;
+  }
+  #top .nav li ul li a.sf-with-ul {
+    padding-right: 10px;
+  }
+  #top .nav li ul li.parent a:after {
+    border-color: transparent transparent transparent #2a5d84;
+    right: 0;
+    top: 46%;
+  }
+  #top .nav li ul li ul {
+    margin: -31px 0 0 180px;
+  }
+  /* 2. MAIN NAVIGATION DROPDOWN MENUS */
+  h3.nav-toggle {
+    display: none;
+  }
+  #navigation {
+    display: block !important;
+  }
+  #navigation .nav li a {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  #navigation .nav li.parent > a {
+    position: relative;
+    padding-right: 2em;
+  }
+  #navigation .nav li.parent > a:after {
+    content: "";
+    display: block;
+    border: 0.3em solid #2a5d84;
+    border-color: #2a5d84 transparent transparent transparent;
+    position: absolute;
+    top: 48%;
+    right: .8751em;
+  }
+  #navigation .nav li:first-child a {
+    border-left: none;
+  }
+  #navigation .nav li ul {
+    background: #fafafa;
+    margin: 0 0 0 -1px;
+    padding: 10px 15px;
+    position: absolute;
+    width: 180px;
+    border: 1px solid #d0d0d0;
+    z-index: 999;
+  }
+  #navigation .nav li ul .sf-sub-indicator {
+    background: url(../images/arrow-superfish-right.png) no-repeat;
+    top: 38%;
+  }
+  #navigation .nav li ul li a {
+    padding: 8px 0px;
+    width: 180px;
+    background: none;
+    font-size: 0.9em;
+    border: none;
+  }
+  #navigation .nav li ul li a:hover {
+    text-decoration: underline;
+    background: none;
+  }
+  #navigation .nav li ul li a.sf-with-ul {
+    padding-right: 0;
+  }
+  #navigation .nav li ul li.current_page_item a,
+  #navigation .nav li ul li.current_page_parent a,
+  #navigation .nav li ul li.current-menu-ancestor a,
+  #navigation .nav li ul li.current-cat a,
+  #navigation .nav li ul li.li.current-menu-item a,
+  #navigation .nav li ul li.sfHover a {
+    background: none;
+  }
+  #navigation .nav li ul li.parent a {
+    padding-right: 0;
+  }
+  #navigation .nav li ul li.parent a:after {
+    border-color: transparent transparent transparent #2a5d84;
+    right: 0;
+    top: 46%;
+  }
+  #navigation .nav li ul ul {
+    margin: -37px 0 0 180px;
+  }
+  /* 2.1 GENERAL DROPDOWN MENUS */
+  .nav li ul {
+    position: absolute;
+    visibility: hidden;
+    filter: alpha(opacity=@opacity * 100);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    -webkit-transition: all ease-in-out 0.2s;
+    -moz-transition: all ease-in-out 0.2s;
+    -o-transition: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
+    overflow: hidden;
+  }
+  .nav li:hover ul ul, .nav li:hover ul ul ul, .nav li:hover ul ul ul ul {
+    filter: alpha(opacity=@opacity * 100);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+  .nav li:hover ul,
+  .nav li li:hover ul,
+  .nav li li li:hover ul,
+  .nav li li li li:hover ul {
+    filter: alpha(opacity=@opacity * 100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+  }
+  /* 3. CONTAINERS & COLUMNS */
+  #main.fullwidth, .layout-full #main, .col-full {
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+  }
+  #main {
+    margin-top: 3em;
+    margin-bottom: -5000px;
+    margin-right: 60px;
+    padding-bottom: 5000px;
+    width: 62.5%;
+    /* 630 / 960 = 0.6562 */
+  }
+  #sidebar {
+    margin-top: 0;
+    margin-bottom: -5000px;
+    padding-bottom: 5000px;
+    width: 25.25%;
+    /* 300 / 960 = 0.3125 */
+  }
+  .entry img {
+    max-width: 100%;
+  }
+  .layout-full .entry img {
+    max-width: 100%;
+  }
+  .layout-right-content #main {
+    float: right;
+  }
+  .layout-right-content #sidebar {
+    float: left;
+  }
+  .layout-full #main {
+    width: 100%;
+  }
+  .col-left {
+    float: left;
+  }
+  .col-right {
+    float: right;
+  }
+  .page-template-template-contact-php .location-twitter .col-left {
+    float: left;
+  }
+  .page-template-template-contact-php .location-twitter #office-location {
+    width: 48%;
+    margin: 0;
+  }
+  .page-template-template-contact-php .location-twitter .contact-social {
+    float: right;
+    width: 48%;
+  }
+  .page-template-template-contact-php .location-twitter .contact-social #twitter {
+    margin: 0;
+  }
+  /* 4. FOOTER WIDGETS */
+  #footer-widgets .block {
+    margin-right: 4.76%;
+    /* 20 / 960 = 0.0208 */
+    float: left;
+  }
+  #footer-widgets.col-1 .block {
+    width: 100%;
+    float: none;
+  }
+  #footer-widgets.col-1 .footer-widget-1 {
+    margin-right: 0;
+  }
+  #footer-widgets.col-2 .block {
+    width: 47.6%;
+    /* 470 / 960 = 0.4896 */
+  }
+  #footer-widgets.col-2 .footer-widget-2 {
+    margin-right: 0;
+  }
+  #footer-widgets.col-3 .block {
+    width: 30.16%;
+    /* 306 / 960 = 0.3186 */
+  }
+  #footer-widgets.col-3 .footer-widget-3 {
+    margin-right: 0;
+  }
+  #footer-widgets.col-4 .block {
+    width: 23.44%;
+    /* 225 / 960 = 0.2344 */
+  }
+  #footer-widgets.col-4 .footer-widget-4 {
+    margin-right: 0;
+  }
+  /* 5. IE FIXES */
+  .ie7 #top-nav {
+    position: relative;
+    z-index: 9999999;
+  }
+  .ie7 .nav li.parent > a {
+    padding-right: 15px !important;
+  }
+}
